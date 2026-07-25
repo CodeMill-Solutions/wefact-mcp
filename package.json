@@ -1,0 +1,65 @@
+{
+  "name": "@codemill-solutions/wefact-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the WeFact API",
+  "license": "MIT",
+  "author": "CodeMill Solutions B.V.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "wefact",
+    "invoicing",
+    "facturatie",
+    "boekhouden",
+    "subscriptions",
+    "ai",
+    "agent",
+    "anthropic",
+    "claude"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeMill-Solutions/wefact-mcp.git"
+  },
+  "homepage": "https://github.com/CodeMill-Solutions/wefact-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/CodeMill-Solutions/wefact-mcp/issues"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wefact-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "whoami": "npx tsx scripts/whoami.ts",
+    "probe": "npx tsx scripts/probe-endpoints.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "axios": "^1.16.1",
+    "dotenv": "^16.6.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "prettier": "^3.8.3",
+    "tsx": "^4.22.3",
+    "typescript": "^5.9.3"
+  }
+}
