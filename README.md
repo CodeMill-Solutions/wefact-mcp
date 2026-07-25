@@ -394,15 +394,25 @@ reviewer can diff it against the API in one place — that is what `npm run prob
 
 ## About CodeMill
 
-[CodeMill Solutions](https://codemill.nl) builds AI-native software for Dutch businesses. We maintain MCP servers for
-the accounting and invoicing platforms our clients actually use:
+This project is built and maintained by [**CodeMill
+Solutions**](https://codemill.dev), a Dutch software development agency
+specializing in custom web applications, API integrations, mobile apps, and AI
+agents & automation for small and medium-sized businesses.
 
-- [`@codemill-solutions/wefact-mcp`](https://www.npmjs.com/package/@codemill-solutions/wefact-mcp)
-- [`@codemill-solutions/e-boekhouden-mcp`](https://www.npmjs.com/package/@codemill-solutions/e-boekhouden-mcp)
-- [`@codemill-solutions/yuki-mcp`](https://www.npmjs.com/package/@codemill-solutions/yuki-mcp)
-- [`@codemill-solutions/twinfield-mcp`](https://www.npmjs.com/package/@codemill-solutions/twinfield-mcp)
+Founded by engineers with 20+ years of combined experience, CodeMill favors
+short communication lines, direct client relationships, and open-source
+foundations to avoid vendor lock-in. A recurring focus is connecting accounting
+and ERP systems to modern AI workflows — this MCP server sits alongside sibling
+projects such as
+[`@codemill-solutions/yuki-mcp`](https://www.npmjs.com/package/@codemill-solutions/yuki-mcp)
+and
+[`@codemill-solutions/twinfield-mcp`](https://www.npmjs.com/package/@codemill-solutions/twinfield-mcp),
+bringing Dutch accounting platforms within reach of AI agents.
 
-📧 Need an integration building? Get in touch at [info@codemill.dev](mailto:info@codemill.dev).
+Based in Noord-Brabant and Overijssel (Netherlands), working bilingually in
+Dutch and English across the Netherlands and the broader European market.
+
+📧 Interested in a custom integration? Reach out via [codemill.dev](https://codemill.dev).
 
 ---
 
