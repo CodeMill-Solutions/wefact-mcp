@@ -414,6 +414,32 @@ function dropUndefined(obj: Record<string, unknown>): Record<string, unknown> {
   return out;
 }
 
+/**
+ * Body keys that carry the credentials and the routing, and must therefore
+ * never arrive via `params`. Overriding `api_key` would change which account a
+ * call authenticates as; overriding `controller`/`action` would let a request
+ * that passed one tool's write/send gate reach a different endpoint entirely —
+ * turning, say, a gated `save_invoice` into an `invoice/sendbyemail` that never
+ * saw WEFACT_ALLOW_SEND.
+ *
+ * No tool can do this today: the MCP SDK parses tool arguments with zod, which
+ * strips unknown top-level keys before a handler ever sees them. This keeps the
+ * guarantee local to the client instead of resting on that, so a future tool
+ * that spreads a caller-controlled record into `params` fails loudly here
+ * rather than silently sending the wrong request.
+ */
+const RESERVED_BODY_KEYS = ['api_key', 'controller', 'action'] as const;
+
+function assertNoReservedKeys(params: Record<string, unknown>, controller: string, action: string): void {
+  const collisions = RESERVED_BODY_KEYS.filter((key) => Object.hasOwn(params, key));
+  if (collisions.length === 0) return;
+  throw new Error(
+    `Refusing to send ${controller}/${action}: request params may not contain the reserved key(s) ` +
+      `${collisions.join(', ')}. Those carry the API key and the endpoint routing and are set by this client, ` +
+      'never by a caller — reaching this message means the calling tool has a bug.',
+  );
+}
+
 function envInt(name: string, fallback: number): number {
   const raw = process.env[name];
   if (raw === undefined || raw.trim() === '') return fallback;
@@ -577,11 +603,16 @@ export class WeFactClient {
     const name = this.resolveAdministration(options.administration);
     const apiKey = this.getApiKey(name);
 
+    const safeParams = dropUndefined(params ?? {});
+    assertNoReservedKeys(safeParams, controller, action);
+
+    // The reserved keys are spread LAST so the credentials and the routing win
+    // by construction, not merely because the guard above rejected a collision.
     const body = {
+      ...safeParams,
       api_key: apiKey,
       controller,
       action,
-      ...dropUndefined(params ?? {}),
     };
 
     const useForm = (process.env['WEFACT_TRANSPORT'] ?? '').trim().toLowerCase() === 'form';

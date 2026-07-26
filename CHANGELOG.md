@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- The API client now refuses any request whose `params` carry `api_key`, `controller` or `action`, and builds the
+  request body so those reserved keys are set last. Tool arguments could not reach them before either — the MCP SDK
+  strips unknown top-level keys during zod parsing — but the guarantee now lives in the client, so a future tool that
+  spreads a caller-controlled record into `params` fails loudly instead of authenticating as a different account or
+  reaching an endpoint that never passed the write/send gate.
+- The publish workflow pins both GitHub Actions to commit SHAs instead of movable tags, declares least-privilege
+  `permissions`, publishes with `--provenance`, and refuses to publish when the pushed tag disagrees with the version
+  in `package.json`.
+
 ## [1.0.0] - 2026-07-25
 
 First release: complete coverage of the WeFact API v2 across all 17 controllers, in 51 tools.
