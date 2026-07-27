@@ -158,117 +158,117 @@ back annotated with a readable `…Label`.
 
 ### Connection
 
-| Tool | Description |
-| --- | --- |
-| `whoami` | Verify the connection and report corporate identities, VAT codes, rate-limit headroom and which gates are enabled. Start here when something fails. |
-| `reload_credentials` | Reload the administration → API-key map from disk without restarting. |
+| Tool                 | Description                                                                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `whoami`             | Verify the connection and report corporate identities, VAT codes, rate-limit headroom and which gates are enabled. Start here when something fails. |
+| `reload_credentials` | Reload the administration → API-key map from disk without restarting.                                                                               |
 
 ### Settings
 
-| Tool | Description |
-| --- | --- |
-| `get_settings` | Corporate identities, sale/purchase VAT codes and VAT rules, or the cost categories that purchase-invoice lines need. |
-| `manage_cost_category` | **Write.** Create, rename or remove a cost category. Deleting is a soft delete. |
+| Tool                   | Description                                                                                                           |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `get_settings`         | Corporate identities, sale/purchase VAT codes and VAT rules, or the cost categories that purchase-invoice lines need. |
+| `manage_cost_category` | **Write.** Create, rename or remove a cost category. Deleting is a soft delete.                                       |
 
 ### Customers and suppliers
 
-| Tool | Description |
-| --- | --- |
-| `list_debtors` | List customers, with search, group and date filters. |
-| `get_debtor` | One customer in full, including invoice preferences, mandate details and extra contacts. |
-| `save_debtor` | **Write.** Create or update a customer. |
-| `manage_debtor_contacts` | **Write.** Add, edit or remove an extra contact person. |
-| `list_creditors` | List suppliers. |
-| `get_creditor` | One supplier in full, including bank details and booking rules. |
-| `save_creditor` | **Write.** Create or update a supplier. |
+| Tool                     | Description                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| `list_debtors`           | List customers, with search, group and date filters.                                     |
+| `get_debtor`             | One customer in full, including invoice preferences, mandate details and extra contacts. |
+| `save_debtor`            | **Write.** Create or update a customer.                                                  |
+| `manage_debtor_contacts` | **Write.** Add, edit or remove an extra contact person.                                  |
+| `list_creditors`         | List suppliers.                                                                          |
+| `get_creditor`           | One supplier in full, including bank details and booking rules.                          |
+| `save_creditor`          | **Write.** Create or update a supplier.                                                  |
 
 > WeFact has **no delete action for customers** — they can be created and edited, never removed via the API.
 
 ### Products and groups
 
-| Tool | Description |
-| --- | --- |
-| `list_products` | List products, with search, group and date filters. |
-| `get_product` | One product in full, including its subscription period. |
-| `save_product` | **Write.** Create or update a product. |
-| `list_groups` | List customer or product groups. `type` is required. |
-| `manage_group` | **Write.** Create, edit or delete a group. On edit, the member list is replaced wholesale. |
+| Tool            | Description                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------ |
+| `list_products` | List products, with search, group and date filters.                                        |
+| `get_product`   | One product in full, including its subscription period.                                    |
+| `save_product`  | **Write.** Create or update a product.                                                     |
+| `list_groups`   | List customer or product groups. `type` is required.                                       |
+| `manage_group`  | **Write.** Create, edit or delete a group. On edit, the member list is replaced wholesale. |
 
 ### Invoices
 
-| Tool | Description |
-| --- | --- |
-| `list_invoices` | List invoices by status, customer and date. Overdue invoices are `status: "sent"` with a `payBeforeTo` of today. |
-| `get_invoice` | One invoice in full, including lines, payments and attachments. |
-| `save_invoice` | **Write.** Create or update an invoice. Creating always produces a draft; nothing is sent. |
-| `manage_invoice_lines` | **Write.** Add, delete or reorder invoice lines. Works on invoices in any status. |
-| `register_payment` | **Write.** Book a partial payment, or mark an invoice paid or unpaid. Also handles purchase invoices. |
-| `credit_invoice` | **Write.** Create a credit invoice reversing a finalised one. The only way to undo a sent invoice. |
-| `set_invoice_state` | **Write.** Block/unblock a draft, or pause/reactivate the payment and reminder process. |
-| `send_invoice_by_email` | **Write + send.** Emails the customer, finalises the draft and assigns its permanent number. |
-| `send_invoice_reminder` | **Write + send.** Emails a payment reminder or a formal demand. |
+| Tool                    | Description                                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `list_invoices`         | List invoices by status, customer and date. Overdue invoices are `status: "sent"` with a `payBeforeTo` of today. |
+| `get_invoice`           | One invoice in full, including lines, payments and attachments.                                                  |
+| `save_invoice`          | **Write.** Create or update an invoice. Creating always produces a draft; nothing is sent.                       |
+| `manage_invoice_lines`  | **Write.** Add, delete or reorder invoice lines. Works on invoices in any status.                                |
+| `register_payment`      | **Write.** Book a partial payment, or mark an invoice paid or unpaid. Also handles purchase invoices.            |
+| `credit_invoice`        | **Write.** Create a credit invoice reversing a finalised one. The only way to undo a sent invoice.               |
+| `set_invoice_state`     | **Write.** Block/unblock a draft, or pause/reactivate the payment and reminder process.                          |
+| `send_invoice_by_email` | **Write + send.** Emails the customer, finalises the draft and assigns its permanent number.                     |
+| `send_invoice_reminder` | **Write + send.** Emails a payment reminder or a formal demand.                                                  |
 
 ### Price quotes
 
-| Tool | Description |
-| --- | --- |
-| `list_price_quotes` | List quotes by status, archive flag and date. |
-| `get_price_quote` | One quote in full, including its customer-facing `AcceptURL`. |
-| `save_price_quote` | **Write.** Create or update a quote. Creating always produces a concept. |
-| `manage_price_quote_lines` | **Write.** Add, delete or reorder quote lines. |
-| `set_price_quote_status` | **Write.** Accept, decline or archive a quote. Accepting can also create a draft invoice. |
-| `send_price_quote_by_email` | **Write + send.** Emails the quote and publishes its online accept link. |
+| Tool                        | Description                                                                               |
+| --------------------------- | ----------------------------------------------------------------------------------------- |
+| `list_price_quotes`         | List quotes by status, archive flag and date.                                             |
+| `get_price_quote`           | One quote in full, including its customer-facing `AcceptURL`.                             |
+| `save_price_quote`          | **Write.** Create or update a quote. Creating always produces a concept.                  |
+| `manage_price_quote_lines`  | **Write.** Add, delete or reorder quote lines.                                            |
+| `set_price_quote_status`    | **Write.** Accept, decline or archive a quote. Accepting can also create a draft invoice. |
+| `send_price_quote_by_email` | **Write + send.** Emails the quote and publishes its online accept link.                  |
 
 ### Purchase invoices
 
-| Tool | Description |
-| --- | --- |
-| `list_credit_invoices` | List purchase invoices (bills received from suppliers). |
-| `get_credit_invoice` | One purchase invoice in full, including cost categories per line. |
-| `save_credit_invoice` | **Write.** Book or update a supplier invoice. |
-| `manage_credit_invoice_lines` | **Write.** Add or delete purchase invoice lines. |
+| Tool                          | Description                                                       |
+| ----------------------------- | ----------------------------------------------------------------- |
+| `list_credit_invoices`        | List purchase invoices (bills received from suppliers).           |
+| `get_credit_invoice`          | One purchase invoice in full, including cost categories per line. |
+| `save_credit_invoice`         | **Write.** Book or update a supplier invoice.                     |
+| `manage_credit_invoice_lines` | **Write.** Add or delete purchase invoice lines.                  |
 
 > Purchase invoices use a **different status scale** from sales invoices: 1 unpaid, 2 partly paid, 3 paid, 8 credit.
 > They have no quantity field on lines, and cannot be downloaded or emailed — WeFact has no such actions.
 
 ### Subscriptions
 
-| Tool | Description |
-| --- | --- |
-| `list_subscriptions` | List subscriptions, sorted by next billing date. |
-| `get_subscription` | One subscription in full, including its recurrence and end conditions. |
-| `save_subscription` | **Write.** Create or update a subscription. Creating one can trigger an immediate invoice. |
-| `terminate_subscription` | **Write.** Cancel a subscription, or undo a cancellation. The only way to end one. |
+| Tool                     | Description                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| `list_subscriptions`     | List subscriptions, sorted by next billing date.                                           |
+| `get_subscription`       | One subscription in full, including its recurrence and end conditions.                     |
+| `save_subscription`      | **Write.** Create or update a subscription. Creating one can trigger an immediate invoice. |
+| `terminate_subscription` | **Write.** Cancel a subscription, or undo a cancellation. The only way to end one.         |
 
 ### Bank transactions
 
-| Tool | Description |
-| --- | --- |
-| `list_transactions` | List bank transactions by direction and reconciliation status. |
-| `get_transaction` | One transaction in full, including what it has been matched against. |
+| Tool                 | Description                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| `list_transactions`  | List bank transactions by direction and reconciliation status.                                         |
+| `get_transaction`    | One transaction in full, including what it has been matched against.                                   |
 | `create_transaction` | **Write.** Import a bank transaction. There is no edit action — corrections mean delete and re-create. |
-| `match_transaction` | **Write.** Reconcile a transaction against one or more documents, optionally marking them paid. |
-| `ignore_transaction` | **Write.** Mark a transaction as ignored. There is no documented way to undo this. |
+| `match_transaction`  | **Write.** Reconcile a transaction against one or more documents, optionally marking them paid.        |
+| `ignore_transaction` | **Write.** Mark a transaction as ignored. There is no documented way to undo this.                     |
 
 ### CRM
 
-| Tool | Description |
-| --- | --- |
-| `list_crm_records` | List tasks, or interactions for a specific record. |
-| `get_crm_record` | One task or interaction in full. |
-| `save_crm_record` | **Write.** Create or update a task or interaction, or change a task's status. |
+| Tool               | Description                                                                   |
+| ------------------ | ----------------------------------------------------------------------------- |
+| `list_crm_records` | List tasks, or interactions for a specific record.                            |
+| `get_crm_record`   | One task or interaction in full.                                              |
+| `save_crm_record`  | **Write.** Create or update a task or interaction, or change a task's status. |
 
 > `list_crm_records` with `type: "interaction"` **requires** `referenceId` and `referenceType` — WeFact cannot list
 > all interactions. Neither tasks nor interactions can be deleted.
 
 ### Documents and files
 
-| Tool | Description |
-| --- | --- |
-| `download_document` | Download an invoice or quote as PDF or UBL, or any attachment, as base64. |
-| `schedule_document_send` | **Write + send.** Arm an automatic send at a future moment, or cancel one. |
-| `manage_attachments` | **Write.** Attach a file to any record, or remove one. |
-| `delete_record` | **Write.** Permanently delete a supplier, product, invoice, purchase invoice, quote or transaction. |
+| Tool                     | Description                                                                                         |
+| ------------------------ | --------------------------------------------------------------------------------------------------- |
+| `download_document`      | Download an invoice or quote as PDF or UBL, or any attachment, as base64.                           |
+| `schedule_document_send` | **Write + send.** Arm an automatic send at a future moment, or cancel one.                          |
+| `manage_attachments`     | **Write.** Attach a file to any record, or remove one.                                              |
+| `delete_record`          | **Write.** Permanently delete a supplier, product, invoice, purchase invoice, quote or transaction. |
 
 Write tools are gated behind `WEFACT_ALLOW_WRITES` and stay dry-run unless `confirm: true`. See
 [Writing data](#writing-data).
@@ -307,11 +307,11 @@ Three guards, in order:
 ```jsonc
 {
   "action": "add",
-  "DebtorCode": "DB10000",          // the customer
+  "DebtorCode": "DB10000", // the customer
   "InvoiceLines": [
-    { "ProductCode": "P0001", "Number": 2 },   // price, VAT and description come from the product
-    { "Description": "Reiskosten", "PriceExcl": 0.19, "Number": 120 }
-  ]
+    { "ProductCode": "P0001", "Number": 2 }, // price, VAT and description come from the product
+    { "Description": "Reiskosten", "PriceExcl": 0.19, "Number": 120 },
+  ],
   // no "confirm" → returns the planned invoice without creating it
 }
 ```
@@ -387,8 +387,8 @@ reviewer can diff it against the API in one place — that is what `npm run prob
 
 - **1.0.0** — full coverage of all 17 WeFact controllers across 51 tools; write and send gates; proactive rate-limit
   throttling; multi-administration support.
-- Unprocessed purchase invoices (WeFact's inbox for incoming bills) *(planned)*
-- Webhook support so agents can react to payments instead of polling *(planned)*
+- Unprocessed purchase invoices (WeFact's inbox for incoming bills) _(planned)_
+- Webhook support so agents can react to payments instead of polling _(planned)_
 
 ---
 

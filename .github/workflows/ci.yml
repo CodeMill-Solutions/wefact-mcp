@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: this workflow only ever reads the repository.
+permissions:
+  contents: read
+
+# A newer push supersedes an in-flight run on the same ref.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Report every failing Node version, not just the first.
+      fail-fast: false
+      matrix:
+        # 20 is the floor package.json `engines` promises, so it is the one that
+        # must actually work; 22 is current LTS; 24 is where users are heading.
+        node: ['20', '22', '24']
+
+    steps:
+      # Actions are pinned to commit SHAs rather than tags, matching
+      # publish.yml. A tag can be moved to point at different code; a SHA
+      # cannot. The trailing comment records the human-readable version.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      # Covers src, test AND scripts — the last of which the build config does
+      # not reach.
+      - run: npm run typecheck
+
+      - run: npm run format:check
+
+      - run: npm run build
+
+      # Only the `unit` project. Contract tests call the live WeFact API, which
+      # requires a whitelisted source IP; a runner's egress address is dynamic,
+      # so they would fail here and burn the per-IP daily failed-auth cap.
+      # test/contract/setup.ts throws if anything ever tries.
+      - run: npm test
+
+      - name: Coverage
+        if: matrix.node == '22'
+        run: npm run test:coverage
+
+      # `files: ["dist"]` should already exclude tests, but the cost of shipping
+      # them once is worse than the cost of checking every time.
+      - name: Tarball contains no test files
+        if: matrix.node == '22'
+        run: |
+          npm pack --dry-run --json > pack.json
+          node -e "
+            const files = require('./pack.json')[0].files.map((f) => f.path);
+            const bad = files.filter((p) => /(^|\/)(test|__snapshots__)\//.test(p) || /\.test\.[cm]?js$/.test(p));
+            if (bad.length) { console.error('Test files in tarball:', bad); process.exit(1); }
+            console.log(files.length + ' files, no tests');
+          "

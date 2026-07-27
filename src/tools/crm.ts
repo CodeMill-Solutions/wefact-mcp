@@ -50,8 +50,6 @@ export function registerCrmTools(server: McpServer, client: WeFactClient): void 
           .describe(
             'Pipe-separated fields to search in. Tasks default to "Title|Description", interactions to "Description".',
           ),
-        offset: z.number().int().min(0).optional().describe('Row offset (default 0).'),
-        limit: z.number().int().min(1).max(1000).optional().describe('Rows per page.'),
         sort: z.string().optional().describe('Field to sort on. Tasks default to "DueAtDate", interactions to "Date".'),
         order: z.enum(['ASC', 'DESC']).optional().describe('Sort direction. Defaults to DESC.'),
         maxItems: z.number().int().positive().optional().describe('Cap on total rows returned (default 1000).'),

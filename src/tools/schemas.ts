@@ -48,19 +48,18 @@ export function identifierShape(codeField: string, entity: string, example: stri
 // ── List parameters ─────────────────────────────────────────────────────────
 
 /**
- * The pagination/search block every WeFact `list` action shares. Per-controller
- * defaults for `sort`, `order` and `searchat` differ, so each tool restates its
- * own in the tool description rather than here.
+ * The sort/search block every auto-paginated WeFact `list` action shares.
+ * Per-controller defaults for `sort`, `order` and `searchat` differ, so each
+ * tool restates its own in the tool description rather than here.
+ *
+ * There is deliberately no `offset` or `limit`. Tools built on this shape page
+ * automatically via `WeFactClient.paginate`, which sets both itself — exposing
+ * them would advertise control the caller does not have. Use `maxItems` to cap
+ * the result, and narrow with filters rather than paging by hand.
+ * `list_groups` is the exception: it calls the API directly and keeps its own
+ * real `offset`/`limit`.
  */
 export const listParamsShape = {
-  offset: z.number().int().min(0).optional().describe('Row offset for manual paging (default 0).'),
-  limit: z
-    .number()
-    .int()
-    .min(1)
-    .max(1000)
-    .optional()
-    .describe('Rows per page (WeFact max 1000). Leave unset — this server pages automatically.'),
   sort: z.string().optional().describe('Field to sort on, e.g. "Date" or "DebtorCode".'),
   order: z.enum(['ASC', 'DESC']).optional().describe('Sort direction.'),
   searchat: z
@@ -80,19 +79,20 @@ export const listParamsShape = {
 };
 
 export interface ListParamsInput {
-  offset?: number;
-  limit?: number;
   sort?: string;
   order?: 'ASC' | 'DESC';
   searchat?: string;
   searchfor?: string;
 }
 
-/** Map the shared list arguments onto WeFact's own parameter names. */
+/**
+ * Map the shared list arguments onto WeFact's own parameter names.
+ *
+ * `offset` and `limit` are intentionally absent: `paginate()` owns them and
+ * would overwrite anything passed here.
+ */
 export function buildListParams(input: ListParamsInput): Record<string, unknown> {
   return {
-    offset: input.offset,
-    limit: input.limit,
     sort: input.sort,
     order: input.order,
     searchat: input.searchat,

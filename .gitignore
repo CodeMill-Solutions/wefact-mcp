@@ -58,3 +58,6 @@ Thumbs.db
 # Claude
 .claude
 CLAUDE.local.md
+
+# Test coverage output
+coverage/

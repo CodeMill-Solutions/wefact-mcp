@@ -118,7 +118,8 @@ export function registerSubscriptionWriteTools(server: McpServer, client: WeFact
         }
 
         const body = compact({
-          Identifier: identifier,
+          // WeFact rejects a stray Identifier on `add`.
+          Identifier: action === 'add' ? undefined : identifier,
           Debtor,
           DebtorCode,
           Subscription: compact(fields),

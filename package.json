@@ -44,6 +44,13 @@
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "whoami": "npx tsx scripts/whoami.ts",
     "probe": "npx tsx scripts/probe-endpoints.ts",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "test": "vitest run --project unit",
+    "test:watch": "vitest --project unit",
+    "test:coverage": "vitest run --project unit --coverage",
+    "test:contract": "WEFACT_CONTRACT=1 vitest run --project contract",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
@@ -58,8 +65,11 @@
   },
   "devDependencies": {
     "@types/node": "^22.19.19",
+    "@vitest/coverage-v8": "^4.1.10",
+    "nock": "^14.0.16",
     "prettier": "^3.8.3",
     "tsx": "^4.22.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
   }
 }

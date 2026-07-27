@@ -35,21 +35,19 @@ export function registerTransactionTools(server: McpServer, client: WeFactClient
           .optional()
           .describe('Reconciliation status. "unmatched" finds transactions still to be matched to a document.'),
         searchfor: z.string().optional().describe('Free-text search across the transaction fields.'),
-        offset: z.number().int().min(0).optional().describe('Row offset (default 0).'),
-        limit: z.number().int().min(1).max(1000).optional().describe('Rows per page.'),
         sort: z.string().optional().describe('Field to sort on. WeFact defaults to "date".'),
         order: z.enum(['ASC', 'DESC']).optional().describe('Sort direction. Defaults to DESC.'),
         maxItems: z.number().int().positive().optional().describe('Cap on total rows returned (default 1000).'),
         administration: administrationArg,
       },
     },
-    async ({ direction, status, searchfor, offset, limit, sort, order, maxItems, administration }) =>
+    async ({ direction, status, searchfor, sort, order, maxItems, administration }) =>
       guard(async () => {
         const { items, totalResults, truncated } = await client.paginate<Record<string, unknown>>('transaction', {
           administration,
           itemsKey: 'transactions',
           maxItems,
-          params: { transactionDirection: direction, status, searchfor, offset, limit, sort, order },
+          params: { transactionDirection: direction, status, searchfor, sort, order },
         });
         return ok({
           count: items.length,

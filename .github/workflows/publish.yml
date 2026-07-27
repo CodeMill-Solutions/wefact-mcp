@@ -33,9 +33,13 @@ jobs:
 
       - run: npm ci
 
-      # `npm run build` runs `tsc`, so a type error fails the publish here
-      # rather than shipping. Add the test suite to this step once one exists —
-      # npm only allows unpublishing within 72 hours.
+      # npm only allows unpublishing within 72 hours, so everything CI checks on
+      # a PR is checked again here against the exact tagged commit. `typecheck`
+      # additionally covers `scripts/`, which the build config does not reach.
+      - run: npm run typecheck
+
+      - run: npm test
+
       - run: npm run build
 
       # A tag that disagrees with package.json means the wrong commit was

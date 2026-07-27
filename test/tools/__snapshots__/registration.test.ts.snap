@@ -1,0 +1,2906 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`tool registration > matches the published input-schema shape 1`] = `
+[
+  {
+    "name": "create_transaction",
+    "properties": [
+      {
+        "prop": "accountBIC",
+        "type": "string",
+      },
+      {
+        "prop": "accountName",
+        "type": "string",
+      },
+      {
+        "prop": "accountNumber",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "amount",
+        "type": "number",
+      },
+      {
+        "prop": "bankAccount",
+        "type": "string",
+      },
+      {
+        "prop": "bankReference",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "currency",
+        "type": "string",
+      },
+      {
+        "prop": "date",
+        "type": "string",
+      },
+      {
+        "prop": "extendedDescription",
+        "type": "string",
+      },
+      {
+        "prop": "shortDescription",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "batch",
+          "deposit",
+          "withdrawal",
+          "reversal",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "amount",
+      "bankAccount",
+      "currency",
+      "date",
+      "type",
+    ],
+  },
+  {
+    "name": "credit_invoice",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "delete_record",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "creditor",
+          "product",
+          "invoice",
+          "creditinvoice",
+          "pricequote",
+          "transaction",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+      {
+        "prop": "withPurchaseInvoices",
+        "type": "boolean",
+      },
+    ],
+    "required": [
+      "type",
+    ],
+  },
+  {
+    "name": "download_document",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "attachmentId",
+        "type": "integer",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "filename",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "pdf",
+          "ubl",
+          "ublwithpdf",
+        ],
+        "prop": "fileType",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "debtor",
+          "creditor",
+          "invoice",
+          "pricequote",
+          "creditinvoice",
+          "crm_task",
+          "crm_interaction",
+        ],
+        "prop": "parentType",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "invoice",
+          "workorder",
+          "confirmation",
+          "deliveryorder",
+          "packageorder",
+        ],
+        "prop": "template",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "invoice",
+          "pricequote",
+          "attachment",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "type",
+    ],
+  },
+  {
+    "name": "get_credit_invoice",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_creditor",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_crm_record",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "task",
+          "interaction",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "identifier",
+      "type",
+    ],
+  },
+  {
+    "name": "get_debtor",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_invoice",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_price_quote",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_product",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_settings",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "costCategoryId",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "general",
+          "cost_categories",
+        ],
+        "prop": "section",
+        "type": "string",
+      },
+      {
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "get_subscription",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [
+      "identifier",
+    ],
+  },
+  {
+    "name": "get_transaction",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [
+      "identifier",
+    ],
+  },
+  {
+    "name": "ignore_transaction",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [
+      "identifier",
+    ],
+  },
+  {
+    "name": "list_credit_invoices",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": "string",
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "unpaid",
+          "partly_paid",
+          "paid",
+          "credit",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_creditors",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": "string",
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_crm_records",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "referenceId",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "debtor",
+          "creditor",
+          "invoice",
+          "pricequote",
+          "creditinvoice",
+          "unprocessed_creditinvoice",
+          "subscription",
+          "unlinked",
+        ],
+        "prop": "referenceType",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "open",
+          "in_progress",
+          "completed",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "task",
+          "interaction",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "type",
+    ],
+  },
+  {
+    "name": "list_debtors",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": "string",
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "groupId",
+        "type": "integer",
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_groups",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "limit",
+        "type": "integer",
+      },
+      {
+        "prop": "offset",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "debtor",
+          "product",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "type",
+    ],
+  },
+  {
+    "name": "list_invoices",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "dateFrom",
+        "type": "string",
+      },
+      {
+        "prop": "dateTo",
+        "type": undefined,
+      },
+      {
+        "prop": "debtorCode",
+        "type": "string",
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": "string",
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "payBeforeFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "payBeforeTo",
+        "type": undefined,
+      },
+      {
+        "prop": "payDateFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "payDateTo",
+        "type": undefined,
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "draft",
+          "sent",
+          "partly_paid",
+          "paid",
+          "credit",
+          "expired",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_price_quotes",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "archived",
+        "type": "boolean",
+      },
+      {
+        "prop": "createdFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "dateFrom",
+        "type": "string",
+      },
+      {
+        "prop": "dateTo",
+        "type": undefined,
+      },
+      {
+        "prop": "expiresFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "expiresTo",
+        "type": undefined,
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": "string",
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "concept",
+          "sent",
+          "accepted",
+          "invoice_created",
+          "declined",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_products",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": "string",
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "groupId",
+        "type": "integer",
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_subscriptions",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "createdFrom",
+        "type": "string",
+      },
+      {
+        "prop": "createdTo",
+        "type": undefined,
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "prop": "modifiedFrom",
+        "type": undefined,
+      },
+      {
+        "prop": "modifiedTo",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchat",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "active",
+          "terminated",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "list_transactions",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "incoming",
+          "outgoing",
+        ],
+        "prop": "direction",
+        "type": "string",
+      },
+      {
+        "prop": "maxItems",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "ASC",
+          "DESC",
+        ],
+        "prop": "order",
+        "type": "string",
+      },
+      {
+        "prop": "searchfor",
+        "type": "string",
+      },
+      {
+        "prop": "sort",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "unmatched",
+          "ignored",
+          "matched",
+          "pending",
+          "proposed_match",
+          "skipped",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "manage_attachments",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "delete",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "attachmentId",
+        "type": "integer",
+      },
+      {
+        "prop": "base64",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "filename",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "debtor",
+          "creditor",
+          "invoice",
+          "pricequote",
+          "creditinvoice",
+          "crm_task",
+          "crm_interaction",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+      "type",
+    ],
+  },
+  {
+    "name": "manage_cost_category",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "edit",
+          "delete",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "active",
+          "removed",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+      {
+        "prop": "title",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "manage_credit_invoice_lines",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "delete",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "lines",
+        "type": "array",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "recalculateTotal",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+      "lines",
+    ],
+  },
+  {
+    "name": "manage_debtor_contacts",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "edit",
+          "delete",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "Address",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "City",
+        "type": "string",
+      },
+      {
+        "prop": "clientId",
+        "type": "integer",
+      },
+      {
+        "prop": "CompanyName",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Country",
+        "type": "string",
+      },
+      {
+        "prop": "debtorCode",
+        "type": "string",
+      },
+      {
+        "prop": "EmailAddress",
+        "type": "string",
+      },
+      {
+        "prop": "FirstName",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "LastName",
+        "type": "string",
+      },
+      {
+        "prop": "MobileNumber",
+        "type": "string",
+      },
+      {
+        "prop": "PhoneNumber",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "m",
+          "f",
+          "d",
+          "fam",
+          "u",
+        ],
+        "prop": "Salutation",
+        "type": "string",
+      },
+      {
+        "prop": "ZipCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "manage_group",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "edit",
+          "delete",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "groupName",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "items",
+        "type": "array",
+      },
+      {
+        "enum": [
+          "debtor",
+          "product",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "manage_invoice_lines",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "delete",
+          "sort",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "lines",
+        "type": "array",
+      },
+    ],
+    "required": [
+      "action",
+      "lines",
+    ],
+  },
+  {
+    "name": "manage_price_quote_lines",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "delete",
+          "sort",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "lines",
+        "type": "array",
+      },
+    ],
+    "required": [
+      "action",
+      "lines",
+    ],
+  },
+  {
+    "name": "match_transaction",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "matches",
+        "type": "array",
+      },
+    ],
+    "required": [
+      "identifier",
+      "matches",
+    ],
+  },
+  {
+    "name": "register_payment",
+    "properties": [
+      {
+        "enum": [
+          "partial",
+          "paid",
+          "unpaid",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "amountPaid",
+        "type": "number",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "payDate",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "wire",
+          "cash",
+          "card",
+          "auth",
+          "accounting",
+          "various",
+          "paypal",
+          "ideal",
+          "qrcode",
+          "other",
+        ],
+        "prop": "paymentMethod",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "invoice",
+          "creditinvoice",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "reload_credentials",
+    "properties": [
+      {
+        "prop": "path",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "save_credit_invoice",
+    "properties": [
+      {
+        "prop": "AccountingCostCentre",
+        "type": "string",
+      },
+      {
+        "prop": "AccountingProject",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "AmountIncl",
+        "type": "number",
+      },
+      {
+        "prop": "AmountPaid",
+        "type": "number",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "Authorisation",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "CreditInvoiceCode",
+        "type": "string",
+      },
+      {
+        "prop": "Creditor",
+        "type": "integer",
+      },
+      {
+        "prop": "CreditorCode",
+        "type": "string",
+      },
+      {
+        "prop": "Currency",
+        "type": "string",
+      },
+      {
+        "prop": "Date",
+        "type": undefined,
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "InvoiceCode",
+        "type": "string",
+      },
+      {
+        "prop": "InvoiceLines",
+        "type": "array",
+      },
+      {
+        "prop": "PayDate",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "wire",
+          "cash",
+          "card",
+          "auth",
+          "accounting",
+          "various",
+          "paypal",
+          "ideal",
+          "qrcode",
+          "other",
+        ],
+        "prop": "PaymentMethod",
+        "type": "string",
+      },
+      {
+        "prop": "ProductInventory",
+        "type": "object",
+      },
+      {
+        "prop": "Status",
+        "type": "integer",
+      },
+      {
+        "prop": "Term",
+        "type": "integer",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_creditor",
+    "properties": [
+      {
+        "prop": "AccountBank",
+        "type": "string",
+      },
+      {
+        "prop": "AccountBIC",
+        "type": "string",
+      },
+      {
+        "prop": "AccountCity",
+        "type": "string",
+      },
+      {
+        "prop": "AccountName",
+        "type": "string",
+      },
+      {
+        "prop": "AccountNumber",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "Address",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "Authorisation",
+        "type": "string",
+      },
+      {
+        "prop": "City",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyName",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyNumber",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Country",
+        "type": "string",
+      },
+      {
+        "prop": "CreditorCode",
+        "type": "string",
+      },
+      {
+        "prop": "EmailAddress",
+        "type": "string",
+      },
+      {
+        "prop": "FaxNumber",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "Initials",
+        "type": "string",
+      },
+      {
+        "prop": "InvoiceTerm",
+        "type": "integer",
+      },
+      {
+        "prop": "MobileNumber",
+        "type": "string",
+      },
+      {
+        "prop": "MyCustomerCode",
+        "type": "string",
+      },
+      {
+        "prop": "PhoneNumber",
+        "type": "string",
+      },
+      {
+        "prop": "ProductInventory",
+        "type": "object",
+      },
+      {
+        "enum": [
+          "m",
+          "f",
+          "d",
+          "fam",
+          "u",
+        ],
+        "prop": "Sex",
+        "type": "string",
+      },
+      {
+        "prop": "SurName",
+        "type": "string",
+      },
+      {
+        "prop": "TaxNumber",
+        "type": "string",
+      },
+      {
+        "prop": "ZipCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_crm_record",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "edit",
+          "status",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "assigneeId",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "phone",
+          "whatsapp",
+          "email",
+          "post",
+          "in_person",
+        ],
+        "prop": "communicationMethod",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "creditInvoiceId",
+        "type": "integer",
+      },
+      {
+        "prop": "creditorId",
+        "type": "integer",
+      },
+      {
+        "prop": "debtorContactId",
+        "type": "integer",
+      },
+      {
+        "prop": "debtorId",
+        "type": "integer",
+      },
+      {
+        "prop": "description",
+        "type": "string",
+      },
+      {
+        "prop": "dueDate",
+        "type": "string",
+      },
+      {
+        "prop": "hours",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "invoiceId",
+        "type": "integer",
+      },
+      {
+        "prop": "minutes",
+        "type": "string",
+      },
+      {
+        "prop": "priceQuoteId",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "open",
+          "in_progress",
+          "completed",
+        ],
+        "prop": "status",
+        "type": "string",
+      },
+      {
+        "prop": "subscriptionId",
+        "type": "integer",
+      },
+      {
+        "prop": "title",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "task",
+          "interaction",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+      {
+        "prop": "unprocessedCreditInvoiceId",
+        "type": "integer",
+      },
+    ],
+    "required": [
+      "action",
+      "type",
+    ],
+  },
+  {
+    "name": "save_debtor",
+    "properties": [
+      {
+        "prop": "AccountBank",
+        "type": "string",
+      },
+      {
+        "prop": "AccountBIC",
+        "type": "string",
+      },
+      {
+        "prop": "AccountCity",
+        "type": "string",
+      },
+      {
+        "prop": "AccountName",
+        "type": "string",
+      },
+      {
+        "prop": "AccountNumber",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "Address",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "City",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyName",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyNumber",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Country",
+        "type": "string",
+      },
+      {
+        "prop": "Currency",
+        "type": "string",
+      },
+      {
+        "prop": "CustomFields",
+        "type": "object",
+      },
+      {
+        "prop": "CustomTaxCode",
+        "type": "string",
+      },
+      {
+        "prop": "DebtorCode",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "none",
+          "invoices",
+          "subscriptions",
+          "all",
+        ],
+        "prop": "DirectDebitApplyTo",
+        "type": "string",
+      },
+      {
+        "prop": "EmailAddress",
+        "type": "string",
+      },
+      {
+        "prop": "FaxNumber",
+        "type": "string",
+      },
+      {
+        "prop": "Groups",
+        "type": "array",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "Initials",
+        "type": "string",
+      },
+      {
+        "prop": "InvoiceMethod",
+        "type": "integer",
+      },
+      {
+        "prop": "InvoiceTerm",
+        "type": "integer",
+      },
+      {
+        "prop": "LanguageCode",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+          "unsubscribed",
+        ],
+        "prop": "Mailing",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "manual",
+          "automatic",
+        ],
+        "prop": "MandateCreationType",
+        "type": "string",
+      },
+      {
+        "prop": "MandateDate",
+        "type": "string",
+      },
+      {
+        "prop": "MandateID",
+        "type": "string",
+      },
+      {
+        "prop": "MobileNumber",
+        "type": "string",
+      },
+      {
+        "prop": "PaymentMail",
+        "type": "integer",
+      },
+      {
+        "prop": "PeppolAddress",
+        "type": "string",
+      },
+      {
+        "prop": "PeriodicInvoiceDays",
+        "type": "integer",
+      },
+      {
+        "prop": "PhoneNumber",
+        "type": "string",
+      },
+      {
+        "prop": "ReminderEmailAddress",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "m",
+          "f",
+          "d",
+          "fam",
+          "u",
+        ],
+        "prop": "Sex",
+        "type": "string",
+      },
+      {
+        "prop": "SurName",
+        "type": "string",
+      },
+      {
+        "prop": "TaxNumber",
+        "type": "string",
+      },
+      {
+        "prop": "ZipCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_invoice",
+    "properties": [
+      {
+        "prop": "AccountingCostCentre",
+        "type": "string",
+      },
+      {
+        "prop": "AccountingProject",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "Address",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "AmountPaid",
+        "type": "number",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "Authorisation",
+        "type": "string",
+      },
+      {
+        "prop": "City",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyName",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Country",
+        "type": "string",
+      },
+      {
+        "prop": "CustomFields",
+        "type": "object",
+      },
+      {
+        "prop": "Date",
+        "type": undefined,
+      },
+      {
+        "prop": "Debtor",
+        "type": "integer",
+      },
+      {
+        "prop": "DebtorCode",
+        "type": "string",
+      },
+      {
+        "prop": "Description",
+        "type": "string",
+      },
+      {
+        "prop": "Discount",
+        "type": "number",
+      },
+      {
+        "prop": "EmailAddress",
+        "type": "string",
+      },
+      {
+        "prop": "ExtraClientContactId",
+        "type": "integer",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "0",
+          "1",
+        ],
+        "prop": "IgnoreDiscount",
+        "type": "string",
+      },
+      {
+        "prop": "Initials",
+        "type": "string",
+      },
+      {
+        "prop": "InvoiceCode",
+        "type": "string",
+      },
+      {
+        "prop": "InvoiceLines",
+        "type": "array",
+      },
+      {
+        "prop": "InvoiceMethod",
+        "type": "integer",
+      },
+      {
+        "prop": "LanguageCode",
+        "type": "string",
+      },
+      {
+        "prop": "PayDate",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "wire",
+          "cash",
+          "card",
+          "auth",
+          "accounting",
+          "various",
+          "paypal",
+          "ideal",
+          "qrcode",
+          "other",
+        ],
+        "prop": "PaymentMethod",
+        "type": "string",
+      },
+      {
+        "prop": "ReferenceNumber",
+        "type": "string",
+      },
+      {
+        "prop": "Sent",
+        "type": "integer",
+      },
+      {
+        "prop": "SentDate",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "m",
+          "f",
+          "d",
+          "fam",
+          "u",
+        ],
+        "prop": "Sex",
+        "type": "string",
+      },
+      {
+        "prop": "Status",
+        "type": "integer",
+      },
+      {
+        "prop": "SubStatus",
+        "type": "string",
+      },
+      {
+        "prop": "SurName",
+        "type": "string",
+      },
+      {
+        "prop": "Term",
+        "type": "integer",
+      },
+      {
+        "prop": "TransactionID",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "UseProductInventory",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "excl",
+          "incl",
+        ],
+        "prop": "VatCalcMethod",
+        "type": "string",
+      },
+      {
+        "prop": "ZipCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_price_quote",
+    "properties": [
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "Address",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "0",
+          "1",
+        ],
+        "prop": "Archived",
+        "type": "string",
+      },
+      {
+        "prop": "City",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "CompanyName",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Country",
+        "type": "string",
+      },
+      {
+        "prop": "CustomFields",
+        "type": "object",
+      },
+      {
+        "prop": "Date",
+        "type": undefined,
+      },
+      {
+        "prop": "Debtor",
+        "type": "integer",
+      },
+      {
+        "prop": "DebtorCode",
+        "type": "string",
+      },
+      {
+        "prop": "Description",
+        "type": "string",
+      },
+      {
+        "prop": "Discount",
+        "type": "number",
+      },
+      {
+        "prop": "EmailAddress",
+        "type": "string",
+      },
+      {
+        "prop": "ExtraClientContactId",
+        "type": "integer",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "0",
+          "1",
+        ],
+        "prop": "IgnoreDiscount",
+        "type": "string",
+      },
+      {
+        "prop": "Initials",
+        "type": "string",
+      },
+      {
+        "prop": "LanguageCode",
+        "type": "string",
+      },
+      {
+        "prop": "PriceQuoteCode",
+        "type": "string",
+      },
+      {
+        "prop": "PriceQuoteLines",
+        "type": "array",
+      },
+      {
+        "prop": "ReferenceNumber",
+        "type": "string",
+      },
+      {
+        "prop": "Sent",
+        "type": "integer",
+      },
+      {
+        "prop": "SentDate",
+        "type": undefined,
+      },
+      {
+        "enum": [
+          "m",
+          "f",
+          "d",
+          "fam",
+          "u",
+        ],
+        "prop": "Sex",
+        "type": "string",
+      },
+      {
+        "prop": "Status",
+        "type": "integer",
+      },
+      {
+        "prop": "SurName",
+        "type": "string",
+      },
+      {
+        "prop": "Term",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "UseProductInventory",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "excl",
+          "incl",
+        ],
+        "prop": "VatCalcMethod",
+        "type": "string",
+      },
+      {
+        "prop": "ZipCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_product",
+    "properties": [
+      {
+        "prop": "AccountingCostCentre",
+        "type": "string",
+      },
+      {
+        "prop": "AccountingProject",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "Barcode",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Groups",
+        "type": "array",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "NumberSuffix",
+        "type": "string",
+      },
+      {
+        "prop": "PriceExcl",
+        "type": "number",
+      },
+      {
+        "enum": [
+          "d",
+          "w",
+          "m",
+          "k",
+          "h",
+          "j",
+          "t",
+        ],
+        "prop": "PricePeriod",
+        "type": "string",
+      },
+      {
+        "prop": "ProductCode",
+        "type": "string",
+      },
+      {
+        "prop": "ProductDescription",
+        "type": "string",
+      },
+      {
+        "prop": "ProductInventory",
+        "type": "object",
+      },
+      {
+        "prop": "ProductKeyPhrase",
+        "type": "string",
+      },
+      {
+        "prop": "ProductName",
+        "type": "string",
+      },
+      {
+        "prop": "TaxCode",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "save_subscription",
+    "properties": [
+      {
+        "prop": "AccountingCostCentre",
+        "type": "string",
+      },
+      {
+        "prop": "AccountingProject",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "add",
+          "edit",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "Comment",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "Debtor",
+        "type": "integer",
+      },
+      {
+        "prop": "DebtorCode",
+        "type": "string",
+      },
+      {
+        "prop": "Description",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "client",
+          "yes",
+          "no",
+        ],
+        "prop": "DirectDebit",
+        "type": "string",
+      },
+      {
+        "prop": "DiscountPercentage",
+        "type": "number",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "NextDate",
+        "type": undefined,
+      },
+      {
+        "prop": "Number",
+        "type": "number",
+      },
+      {
+        "prop": "NumberSuffix",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "d",
+          "w",
+          "m",
+          "k",
+          "h",
+          "j",
+          "t",
+        ],
+        "prop": "Periodic",
+        "type": "string",
+      },
+      {
+        "prop": "Periods",
+        "type": "integer",
+      },
+      {
+        "prop": "PriceExcl",
+        "type": "number",
+      },
+      {
+        "prop": "ProductCode",
+        "type": "string",
+      },
+      {
+        "prop": "StartDate",
+        "type": "string",
+      },
+      {
+        "prop": "TaxCode",
+        "type": "string",
+      },
+      {
+        "prop": "TerminateAfter",
+        "type": "integer",
+      },
+      {
+        "prop": "TerminationDate",
+        "type": undefined,
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "schedule_document_send",
+    "properties": [
+      {
+        "enum": [
+          "schedule",
+          "cancel",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "sendAt",
+        "type": "string",
+      },
+      {
+        "enum": [
+          "invoice",
+          "pricequote",
+        ],
+        "prop": "type",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+      "type",
+    ],
+  },
+  {
+    "name": "send_invoice_by_email",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "send_invoice_reminder",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "enum": [
+          "reminder",
+          "summation",
+        ],
+        "prop": "level",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "level",
+    ],
+  },
+  {
+    "name": "send_price_quote_by_email",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+    ],
+    "required": [],
+  },
+  {
+    "name": "set_invoice_state",
+    "properties": [
+      {
+        "enum": [
+          "block",
+          "unblock",
+          "pause",
+          "reactivate",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "enum": [
+          "yes",
+          "no",
+        ],
+        "prop": "disableOnlinePayment",
+        "type": "string",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "pausedReason",
+        "type": "string",
+      },
+      {
+        "prop": "pausedUntil",
+        "type": "string",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "set_price_quote_status",
+    "properties": [
+      {
+        "enum": [
+          "accept",
+          "decline",
+          "archive",
+        ],
+        "prop": "action",
+        "type": "string",
+      },
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "code",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "createInvoice",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "useQuoteCodeAsReference",
+        "type": "boolean",
+      },
+      {
+        "prop": "useTodayForLineDates",
+        "type": "boolean",
+      },
+    ],
+    "required": [
+      "action",
+    ],
+  },
+  {
+    "name": "terminate_subscription",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+      {
+        "prop": "confirm",
+        "type": "boolean",
+      },
+      {
+        "prop": "identifier",
+        "type": "integer",
+      },
+      {
+        "prop": "terminateAfter",
+        "type": "integer",
+      },
+      {
+        "prop": "terminationDate",
+        "type": "string",
+      },
+      {
+        "prop": "undo",
+        "type": "boolean",
+      },
+    ],
+    "required": [
+      "identifier",
+    ],
+  },
+  {
+    "name": "whoami",
+    "properties": [
+      {
+        "prop": "administration",
+        "type": "string",
+      },
+    ],
+    "required": [],
+  },
+]
+`;

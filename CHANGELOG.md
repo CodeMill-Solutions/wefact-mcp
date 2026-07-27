@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Test suite** — 316 tests across 11 files, run with `npm test`. It is built around the behaviours that would fail
+  _silently_ if a refactor undid them: the call would still succeed, still return a plausible envelope, and still do
+  the wrong thing. Every one of them was a real bug during development.
+  - **Tool layer** drives a real `McpServer` over an in-memory transport with a stubbed WeFact client, so the MCP
+    SDK's server-side zod validation runs for real — which matters, because the `CostCategory` coercion lives
+    entirely in a `.transform` a capture-fake would never execute.
+  - **Write and send gates** are swept across all 28 write tools: blocked without `WEFACT_ALLOW_WRITES`, dry-run
+    without `confirm`, and — for the four tools that email customers — still blocked with `WEFACT_ALLOW_SEND` unset
+    _even when `confirm: true` is passed_. Each case also asserts the client was never called.
+  - **Line routing** locks the trap the WeFact docs get wrong: `sortlines` on the parent controller, line
+    `add`/`delete` on the line controller, plus static invariants over the whole endpoint map.
+  - **Client layer** runs real axios against `nock`, so the axios configuration is the subject rather than a mock:
+    a 403 firewall ban is never retried, transient failures back off 1s then 4s, the rate-limit throttle waits out
+    the minute window, and `paginate` returns `[]` when WeFact omits the rows key.
+  - **Schema shape snapshot** of all 51 tools, excluding descriptions, so a change to the contract agents depend on
+    cannot pass unnoticed while prose edits stay noise-free.
+  - Each locked behaviour was verified by breaking it and confirming the corresponding test fails.
+- **Contract tests** (`npm run test:contract`) — four live calls confirming the endpoint map still holds. Opt-in,
+  and they refuse to run under `CI`/`GITHUB_ACTIONS`: a runner's egress IP cannot be whitelisted, so an attempt
+  there would fail _and_ consume the per-IP daily failed-authentication cap. The full 97-endpoint sweep sits behind
+  a second flag.
+- **CI workflow** on pull requests and pushes to main: typecheck, format check, build, tests, coverage, and an
+  `npm pack` assertion that no test file reaches the published tarball. Node 20/22/24, actions pinned to SHAs.
+  `publish.yml` now runs the typecheck and tests before building.
+- `npm run typecheck` covers `src`, `test` **and `scripts`** — the last of which the build config never reached, so
+  the two probe scripts were shipping unchecked.
+
+### Changed
+
+- Tool registration moved from `src/index.ts` into `src/register-tools.ts`, so the suite drives the real tool set
+  rather than a hand-maintained copy. `TOOL_COUNT` feeds the startup banner and is asserted against the registered
+  set, so the banner cannot drift.
+- `offset` and `limit` are gone from the auto-paginated list tools. `paginate()` sets both itself and silently
+  overwrote anything a caller passed, while the schema advertised `offset` as "Row offset for manual paging" —
+  a promise the code never kept. `list_groups`, which calls the API directly and genuinely honours them, keeps both.
+
+### Fixed
+
+- `save_subscription` no longer sends `Identifier` when creating a subscription. WeFact rejects it
+  ("Een Identifier is niet toegestaan voor deze actie"); the guard was applied to the other create tools but missed
+  here, and the live probe never caught it because subscription validation fails on other fields first.
+
 ### Security
 
 - The API client now refuses any request whose `params` carry `api_key`, `controller` or `action`, and builds the
@@ -85,7 +129,7 @@ Behaviours where the published WeFact documentation is wrong, verified against a
 - **`extraclientcontact/edit` re-validates the identifying trio**, so a partial update still has to resend one of
   `CompanyName`, `LastName` or `EmailAddress`. `manage_debtor_contacts` says so explicitly instead of surfacing
   WeFact's ambiguous Dutch error.
-- **Invoice status 9 ("vervallen") means voided *or* expired** — crediting a paid invoice moves the original to 9,
+- **Invoice status 9 ("vervallen") means voided _or_ expired** — crediting a paid invoice moves the original to 9,
   so the label reads "voided or expired" rather than committing to the wrong half.
 - **Rate limits are ~500/minute and ~5000/hour**, not the 200/3600 the documentation states.
 
