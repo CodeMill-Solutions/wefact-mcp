@@ -64,8 +64,10 @@ describe('throttling decisions', () => {
   it('waits for the window to reset when headroom is at or below the reserve', async () => {
     const client = testClient();
 
-    // Two calls left, window resets in 2 seconds.
-    api().reply(200, success(), rateLimitHeaders(2, 2));
+    // Two calls left, window resets in 3 seconds. The header carries whole
+    // seconds, so a shorter window could truncate to barely over 1s of real
+    // wait and make the lower bound below flaky.
+    api().reply(200, success(), rateLimitHeaders(2, 3));
     await client.request({ controller: 'settings', action: 'list' });
 
     api().reply(200, success(), rateLimitHeaders(500, 60));
@@ -73,7 +75,7 @@ describe('throttling decisions', () => {
     await client.request({ controller: 'settings', action: 'list' });
     const elapsed = Date.now() - started;
 
-    expect(elapsed, 'the second call should have waited for the reset').toBeGreaterThanOrEqual(1_500);
+    expect(elapsed, 'the second call should have waited for the reset').toBeGreaterThanOrEqual(1_800);
     expect(elapsed).toBeLessThan(6_000);
   }, 20_000);
 
@@ -95,7 +97,7 @@ describe('throttling decisions', () => {
     // which is what lets an operator sharing an IP raise it without a restart.
     const client = testClient();
 
-    api().reply(200, success(), rateLimitHeaders(20, 2));
+    api().reply(200, success(), rateLimitHeaders(20, 3));
     await client.request({ controller: 'settings', action: 'list' });
 
     api().reply(200, success(), rateLimitHeaders(500, 60));
@@ -104,7 +106,7 @@ describe('throttling decisions', () => {
       client.request({ controller: 'settings', action: 'list' }),
     );
 
-    expect(Date.now() - started, '20 remaining is below a reserve of 50').toBeGreaterThanOrEqual(1_500);
+    expect(Date.now() - started, '20 remaining is below a reserve of 50').toBeGreaterThanOrEqual(1_800);
   }, 20_000);
 
   it('refuses to sleep longer than one minute window — a skewed clock must not stall the server', async () => {

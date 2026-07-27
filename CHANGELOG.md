@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Test suite** — 316 tests across 11 files, run with `npm test`. It is built around the behaviours that would fail
+- **Test suite** — 468 tests across 13 files, run with `npm test`. It is built around the behaviours that would fail
   _silently_ if a refactor undid them: the call would still succeed, still return a plausible envelope, and still do
   the wrong thing. Every one of them was a real bug during development.
   - **Tool layer** drives a real `McpServer` over an in-memory transport with a stubbed WeFact client, so the MCP
@@ -25,7 +25,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     the minute window, and `paginate` returns `[]` when WeFact omits the rows key.
   - **Schema shape snapshot** of all 51 tools, excluding descriptions, so a change to the contract agents depend on
     cannot pass unnoticed while prose edits stay noise-free.
+  - **Dispatch coverage** for every arm of every consolidated tool's `action`/`type` enum, asserting the resulting
+    `controller/action`. These tools fold several endpoints behind one argument, so a mis-wired arm is invisible:
+    the tool still exists, still validates, still returns a plausible result, and calls the wrong endpoint.
+  - **Filter translation and annotation** on the read side — status words to WeFact codes, flat date arguments to
+    the nested `{from, to}` objects, and the `…Label` fields added to coded values. A mistranslation there does not
+    error; it silently returns the wrong rows.
   - Each locked behaviour was verified by breaking it and confirming the corresponding test fails.
+  - Coverage: 96.8% statements, 93.8% branches, 99.5% functions. Thresholds are enforced per path and sit just
+    under those numbers, so coverage ratchets rather than drifting.
 - **Contract tests** (`npm run test:contract`) — four live calls confirming the endpoint map still holds. Opt-in,
   and they refuse to run under `CI`/`GITHUB_ACTIONS`: a runner's egress IP cannot be whitelisted, so an attempt
   there would fail _and_ consume the per-IP daily failed-authentication cap. The full 97-endpoint sweep sits behind

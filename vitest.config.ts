@@ -54,28 +54,25 @@ export default defineConfig({
         'src/wefact-endpoints.ts',
       ],
       thresholds: {
-        // Strict where the logic is dense. Branch coverage is the metric that
-        // matters here: every regression this suite locks is a branch, not a
-        // line — `?? 'no'`, `action === 'sort' ? …`, `httpStatus >= 500`.
-        'src/wefact-client.ts': { statements: 85, branches: 85, functions: 90, lines: 85 },
+        // Branch coverage is the metric that matters here: every behaviour this
+        // suite locks is a branch, not a line — `?? 'no'`, `action === 'sort'
+        // ? …`, `httpStatus >= 500`, `type === 'attachment' ? …`.
+        'src/wefact-client.ts': { statements: 95, branches: 88, functions: 100, lines: 96 },
         'src/tools/write-helpers.ts': { statements: 100, branches: 95, functions: 100, lines: 100 },
         'src/tools/result.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
-        // Global numbers are a ratchet against regression, not a target. They
-        // sit just below what the suite currently achieves, so coverage cannot
-        // silently fall — but they are deliberately not pushed higher.
-        //
-        // The remaining uncovered branches are almost entirely optional-argument
-        // permutations inside the 29 tool modules. Driving that number up would
-        // mean a test per tool asserting it forwards each field, which
-        // transcribes the implementation into a second file and locks in the
-        // shape of code that should stay easy to change. The guarantee that
-        // every tool is actually exercised comes instead from the structural
-        // sweeps: all 51 in registration.test.ts and validation.test.ts, all 28
-        // write tools through the gate matrix in write-gate.test.ts.
-        statements: 85,
-        branches: 65,
-        functions: 95,
-        lines: 85,
+        // The tool modules, where the consolidated `action`/`type` dispatches
+        // live. A mis-wired arm of one of those switches is invisible at
+        // runtime — the tool still exists, still validates, still returns a
+        // plausible result, and calls the wrong endpoint — so this is the one
+        // group worth holding to a high branch number.
+        'src/tools/**/*.ts': { statements: 94, branches: 90, functions: 98, lines: 94 },
+        // Global figures sit just under what the suite achieves, so they
+        // ratchet: coverage cannot fall silently, but an ordinary refactor does
+        // not fail CI over a rounding difference.
+        statements: 95,
+        branches: 92,
+        functions: 98,
+        lines: 96,
       },
     },
   },
